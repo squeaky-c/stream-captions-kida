@@ -13,7 +13,7 @@ recognition.continuous = true;
 recognition.lang = "en-US";
 recognition.interimResults = true;
 
-var captions = document.querySelector(".captions");
+var captions = document.querySelectorAll(".captions");
 
 document.body.onclick = function () {
   recognition.start();
@@ -34,8 +34,10 @@ recognition.onresult = function (event) {
       lastFinalResult + " " + event.results[event.resultIndex][0].transcript;
   }
 
-  captions.textContent = caption;
-  captions.scrollTop = captions.scrollHeight;
+  captions.forEach((selector) => {
+    selector.textContent = caption;
+    selector.scrollTop = selector.scrollHeight;
+  });
 
   console.log(
     "New interim result:",
@@ -53,7 +55,10 @@ recognition.onresult = function (event) {
   console.log("Last final result:", lastFinalResult);
 
   captionTimeout = setTimeout(() => {
-    captions.textContent = "";
+    captions.forEach((selector) => {
+      selector.textContent = "";
+    });
+
     isNewLine = true;
     console.log(isNewLine ? "Next input is new line" : "TIMEOUT DIDN'T WORK");
     lastFinalResult = "";
@@ -61,7 +66,9 @@ recognition.onresult = function (event) {
 };
 
 recognition.onstart = function () {
-  captions.textContent = "";
+  captions.forEach((selector) => {
+    selector.textContent = "";
+  });
 };
 
 recognition.onend = function () {
