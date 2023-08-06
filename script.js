@@ -6,8 +6,7 @@ var SpeechRecognitionEvent =
 let captionTimeout;
 let lastFinalResult = "";
 let isNewLine = true;
-let lastLineIndex = 0;
-let currentLineIndex = 0;
+let caption = "";
 var recognition = new SpeechRecognition();
 
 recognition.continuous = true;
@@ -21,16 +20,6 @@ document.body.onclick = function () {
   console.log("Starting speech recognition");
 };
 
-function startClearTimer(timer) {
-  timer = setTimeout(clearTextContent(captions), 5000);
-}
-
-function clearTextContent(querySelector, timer) {
-  console.log("Clearing caption text");
-  lastFinalResult = "";
-  querySelector.textContent = "";
-}
-
 recognition.onresult = function (event) {
   console.log(isNewLine ? "Starting new line" : "Continuing line");
 
@@ -39,12 +28,19 @@ recognition.onresult = function (event) {
   console.log("isfinal?", event.results[event.resultIndex].isFinal);
 
   if (isNewLine) {
-    captions.textContent = event.results[event.resultIndex][0].transcript;
-    currentLineIndex = event.resultIndex;
+    caption = event.results[event.resultIndex][0].transcript;
   } else {
-    captions.textContent =
+    caption =
       lastFinalResult + " " + event.results[event.resultIndex][0].transcript;
   }
+
+  /*
+  if (caption.length > 200) {
+    caption.slice(caption.length - 200);
+  }
+  */
+
+  captions.textContent = caption;
 
   console.log(
     "New interim result:",
@@ -66,12 +62,11 @@ recognition.onresult = function (event) {
     isNewLine = true;
     console.log(isNewLine ? "Next input is new line" : "TIMEOUT DIDN'T WORK");
     lastFinalResult = "";
-    lastLineIndex = -1;
-  }, 6000);
+  }, 3000);
 };
 
 recognition.onstart = function () {
-  captions.textContent = "All systems ready";
+  captions.textContent = "";
 };
 
 recognition.onend = function () {
