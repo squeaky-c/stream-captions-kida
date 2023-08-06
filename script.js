@@ -34,13 +34,8 @@ recognition.onresult = function (event) {
       lastFinalResult + " " + event.results[event.resultIndex][0].transcript;
   }
 
-  /*
-  if (caption.length > 200) {
-    caption.slice(caption.length - 200);
-  }
-  */
-
   captions.textContent = caption;
+  captions.scrollTop = captions.scrollHeight;
 
   console.log(
     "New interim result:",
@@ -62,7 +57,7 @@ recognition.onresult = function (event) {
     isNewLine = true;
     console.log(isNewLine ? "Next input is new line" : "TIMEOUT DIDN'T WORK");
     lastFinalResult = "";
-  }, 3000);
+  }, 4000);
 };
 
 recognition.onstart = function () {

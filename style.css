@@ -12,20 +12,30 @@ body {
 }
 
 .caption-container {
-  transform: perspective(2500px) rotateX(54deg) rotateY(7deg) rotateZ(326deg)
+  transform: perspective(none) rotateX(305deg) rotateY(357deg) rotateZ(329deg)
     scale(2);
   position: absolute;
-  left: 420px;
-  top: 250px;
+  left: 360px;
+  top: 140px;
   width: 600px;
-  height: 200px;
+  height: 137px;
   overflow: hidden;
   max-width: 800px;
   margin: 0 auto;
 }
 
-p {
+.captions {
+  width: 500px;
+  height: 112px;
+  align-items: flex-end;
   text-align: center;
-  padding: 35px;
-  vertical-align: bottom;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.captions::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
 }
