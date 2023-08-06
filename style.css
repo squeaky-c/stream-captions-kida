@@ -2,21 +2,20 @@
   font-family: "Fredoka";
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 14px;
+  font-size: 24px;
   font-weight: 800;
 }
 
 body {
-  background-color: none;
+  background-color: rgb(0, 255, 0);
 }
 
 .caption-container {
   transform: perspective(2500px) rotateX(54deg) rotateY(7deg) rotateZ(326deg)
-    scale(1);
-  background-color: rgb(0, 255, 0);
+    scale(2);
   position: absolute;
   left: 420px;
-  top: 750px;
+  top: 250px;
   width: 600px;
   height: 200px;
   overflow: hidden;
