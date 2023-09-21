@@ -12,8 +12,7 @@ body {
 }
 
 .caption-container {
-  transform: perspective(none) rotateX(305deg) rotateY(357deg) rotateZ(329deg)
-    scale(2);
+  transform: perspective(none) rotateX(305deg) rotateY(357deg) rotateZ(329deg) scale(2);
   position: absolute;
   left: 360px;
   top: 140px;
@@ -28,8 +27,8 @@ body {
   position: absolute;
   left: 32px;
   top: 420px;
-  width: 700px;
-  height: 72px;
+  width: 1167px;
+  height: 120px;
   overflow: hidden;
   margin: 0 auto;
 }
@@ -40,20 +39,25 @@ body {
   align-items: flex-end;
   text-align: center;
   overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
 }
 
 .gaming .captions {
-  width: 700px;
-  height: 72px;
-  font-size: 28px;
+  width: 1167px;
+  height: 120px;
+  font-size: 48px;
+  line-height: 60px;
   align-items: flex-end;
   text-align: center;
   color: white;
   overflow-y: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
 }
 
 .captions::-webkit-scrollbar {
