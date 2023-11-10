@@ -25,7 +25,7 @@ recognition.onresult = function (event) {
 
   clearTimeout(captionTimeout);
 
-  console.log("isfinal?", event.results[event.resultIndex].isFinal);
+  console.log("isFinal?", event.results[event.resultIndex].isFinal);
 
   if (isNewLine) {
     caption = event.results[event.resultIndex][0].transcript;
@@ -48,8 +48,6 @@ recognition.onresult = function (event) {
     isNewLine = false;
   }
 
-  console.log(isNewLine ? "SHIT FUCK!" : "Waiting for more speech...");
-
   lastFinalResult = event.results[event.resultIndex - 1][0].transcript;
 
   console.log("Last final result:", lastFinalResult);
@@ -60,7 +58,6 @@ recognition.onresult = function (event) {
     });
 
     isNewLine = true;
-    console.log(isNewLine ? "Next input is new line" : "TIMEOUT DIDN'T WORK");
     lastFinalResult = "";
   }, 4000);
 };
